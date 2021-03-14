@@ -1,34 +1,13 @@
 const connection = require('./connection')
 
+// utils
+const questionsUtils = require('../utils/questionsUtils')
+
 module.exports = {
     numOfAlternatives: 4,
 
     addQuestions(questions, quizzId) {
         return new Promise((resolve, reject) => {
-            function getQuestionAlternativeContent(alternatives) {
-                let contentArray = []
-        
-                for(let i = 0; i < this.numOfAlternatives; i++) {
-                    if(alternatives[i]) {
-                        contentArray.push(`"${alternatives[i].content}"`)
-                    } else {
-                        contentArray.push('default')
-                    }
-                }
-        
-                return contentArray.join(',')
-            }
-        
-            function getCorrectAlternativeMark(alternatives) {
-                let correctMark = ''
-        
-                alternatives.forEach(item => {
-                    if(item.correct) correctMark = item.mark
-                })
-        
-                return correctMark
-            }
-
             connection.query(`
                 INSERT INTO questions (
                     title,
@@ -41,8 +20,8 @@ module.exports = {
                 ) VALUES ${questions.map(item => {
                     return `(
                         "${item.title}", 
-                        ${getQuestionAlternativeContent(item.alternatives)},
-                        "${getCorrectAlternativeMark(item.alternatives)}",
+                        ${questionsUtils.getQuestionAlternativeContent(item.alternatives)},
+                        "${questionsUtils.getCorrectAlternativeMark(item.alternatives)}",
                         ${quizzId}
                     )`
                 })}
@@ -59,46 +38,17 @@ module.exports = {
     getQuestions(quizzId) {
         return new Promise((resolve, reject) => {
             connection.query(`
-                SELECT title, A, B, C, D
+                SELECT id questionId, title, A, B, C, D
                 FROM questions
                 WHERE quizzId = ?;
             `, [quizzId], (err, results) => {
                 if(err) {
                     reject({status: 404, message: 'Questões do quizz não encontradas.'})
                 } else { 
-                    resolve(this.formatQuestions(results))
+                    resolve(questionsUtils.formatQuestions(results))
                 }
             })
         })
-    },
-
-    formatQuestions(questions) {
-        function formatAlternatives(q) {
-            let alternativesArray = []
-
-            Object.keys(q).forEach(key => {
-                let alternative = {}
-
-                if(['A', 'B', 'C', 'D'].indexOf(key) !== -1) {
-                    alternative.mark = key
-                    alternative.content = q[key]
-                    alternative.isCorrect = null
-
-                    q[key] && alternativesArray.push(alternative) // se a alternativa existe (não é null), adiciona
-                }
-            })
-
-            return alternativesArray
-        }
-
-        let formated = questions.map(q => {
-            return {
-                title: q.title,
-                alternatives: formatAlternatives(q)
-            }
-        })
-
-        return formated
     },
 
     verifyQuestionAnswer(questionId) {

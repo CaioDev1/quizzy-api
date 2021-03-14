@@ -56,5 +56,19 @@ module.exports = {
                 }
             })
         })
+    },
+
+    getQuizzLength(quizzId) {
+        return new Promise((resolve, reject) => {
+            connection.query(`
+                SELECT questionNum FROM quizz WHERE id = ?
+            `, [quizzId], (err, results) => {
+                if(err) {
+                    reject({status: 404, message: 'Houve um erro ao tentar encontrar o n° de perguntas do quizz.'})
+                } else {
+                    resolve(results[0].questionNum)
+                }
+            })
+        })
     }
 }

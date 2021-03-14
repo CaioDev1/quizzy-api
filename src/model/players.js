@@ -12,7 +12,7 @@ module.exports = {
                     if(err) {
                         reject({status: 500, message: 'Erro ao tentar adicionar novo jogador.'})
                     } else {
-                        resolve()
+                        resolve(results.insertId)
                     }
                 })
             }).catch(err => {
@@ -31,7 +31,7 @@ module.exports = {
                 if(err) {
                     reject({status: 404, message: 'Houve um erro ao tentar atualizar score do jogador.'})
                 } else {
-                    resolve()
+                    resolve(200)
                 }
             })
         })
