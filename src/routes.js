@@ -49,9 +49,10 @@ route.patch('/player/send-answer', (req, res, next) => {
 route.post('/quizz/add', (req, res, next) => {
     const {owner, theme, questions} = req.body
 
-    quizz.addQuizz(owner, theme, questions).then(() => {
+    quizz.addQuizz(owner, theme, questions).then(quizzId => {
         res.status(201).json({
-            message: 'Quizz created successfully.'
+            message: 'Quizz created successfully.',
+            quizzId
         })
     }).catch(err => {
         next(err)

@@ -1,8 +1,8 @@
 module.exports = {
-    getQuestionAlternativeContent(alternatives) {
+    getQuestionAlternativeContent(alternatives, numOfAlternatives) {
         let contentArray = []
 
-        for(let i = 0; i < this.numOfAlternatives; i++) {
+        for(let i = 0; i < numOfAlternatives; i++) {
             if(alternatives[i]) {
                 contentArray.push(`"${alternatives[i].content}"`)
             } else {

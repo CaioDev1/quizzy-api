@@ -26,7 +26,7 @@ module.exports = {
                     reject({status: 500, message: 'Houve um erro ao tentar criar o quizz.'})
                 } else {
                     questions.addQuestions(questionsList, results.insertId).then(() => {
-                        resolve()
+                        resolve(results.insertId)
                     }).catch(err => {
                         reject(err)
                     })
@@ -63,7 +63,7 @@ module.exports = {
             connection.query(`
                 SELECT questionNum FROM quizz WHERE id = ?
             `, [quizzId], (err, results) => {
-                if(err) {
+                if(err || !results.length) {
                     reject({status: 404, message: 'Houve um erro ao tentar encontrar o n° de perguntas do quizz.'})
                 } else {
                     resolve(results[0].questionNum)

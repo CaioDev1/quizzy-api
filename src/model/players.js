@@ -44,8 +44,8 @@ module.exports = {
                 WHERE quizzId = ?
                 ORDER BY score DESC
             `, [quizzId], (err, results) => {
-                if(err) {
-                    reject({status: 404, message: 'Houve um erro ao tentar encontrar os jogadores do quizz.'})
+                if(err || !results.length) {
+                    reject({status: 404, message: 'Jogadores do quizz não encontrados.'})
                 } else {
                     resolve(results)
                 }
