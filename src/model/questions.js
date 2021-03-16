@@ -28,7 +28,7 @@ module.exports = {
             `, (err, results) => {
                 if(err) {
                     console.log(err)
-                    reject({status: 500, message: 'Erro ao tentar adicionar novas questões.'})
+                    reject({status: 500, message: 'Erro ao tentar adicionar novas questões.', err})
                 } else {
                     resolve()
                 }
@@ -44,7 +44,7 @@ module.exports = {
                 WHERE quizzId = ?;
             `, [quizzId], (err, results) => {
                 if(err || !results.length) {
-                    reject({status: 404, message: 'Questões do quizz não encontradas.'})
+                    reject({status: 404, message: 'Questões do quizz não encontradas.', err})
                 } else { 
                     resolve(questionsUtils.formatQuestions(results))
                 }
@@ -58,7 +58,7 @@ module.exports = {
                 SELECT correctQuestion FROM questions WHERE id = ?
             `, [questionId], (err, results) => {
                 if(err || !results.length) {
-                    reject({status: 404, message: 'Houve um erro ao tentar encontrar a questão para a verificação.'})
+                    reject({status: 404, message: 'Houve um erro ao tentar encontrar a questão para a verificação.', err})
                 } else {
                     resolve(results[0].correctQuestion)
                 }

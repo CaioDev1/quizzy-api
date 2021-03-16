@@ -27,4 +27,10 @@ connection.on('error', err => {
     setTimeout(connectDB, 1000)    
 })
 
+connection.on('uncaughtException', err => {
+    console.log(err)
+
+    setTimeout(connectDB, 1000)    
+})
+
 module.exports = connection

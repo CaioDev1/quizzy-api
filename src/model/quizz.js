@@ -9,7 +9,7 @@ module.exports = {
                 SELECT 0 FROM quizz WHERE id = ?
             `, [id], (err, results) => {
                 if(err) {
-                    reject({status: 404, message: 'Nenhum quizz encontrado com esse código.'})
+                    reject({status: 404, message: 'Nenhum quizz encontrado com esse código.', err})
                 } else {
                     resolve()
                 }
@@ -23,7 +23,7 @@ module.exports = {
                 INSERT INTO quizz (owner, theme, questionNum) VALUES (?, ?, ?)
             `, [owner, theme, questionsList.length], (err, results) => {
                 if(err) {
-                    reject({status: 500, message: 'Houve um erro ao tentar criar o quizz.'})
+                    reject({status: 500, message: 'Houve um erro ao tentar criar o quizz.', err})
                 } else {
                     questions.addQuestions(questionsList, results.insertId).then(() => {
                         resolve(results.insertId)
@@ -43,7 +43,7 @@ module.exports = {
                 WHERE id = ?
             `, [quizzId, quizzId], (err, results) => {
                 if(err) {
-                    reject({status: 404, message: 'Quizz não encontrado.'})
+                    reject({status: 404, message: 'Quizz não encontrado.', err})
                 } else {
                     questions.getQuestions(quizzId).then(questions => {
                         resolve({
@@ -64,7 +64,7 @@ module.exports = {
                 SELECT questionNum FROM quizz WHERE id = ?
             `, [quizzId], (err, results) => {
                 if(err || !results.length) {
-                    reject({status: 404, message: 'Houve um erro ao tentar encontrar o n° de perguntas do quizz.'})
+                    reject({status: 404, message: 'Houve um erro ao tentar encontrar o n° de perguntas do quizz.', err})
                 } else {
                     resolve(results[0].questionNum)
                 }

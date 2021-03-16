@@ -10,7 +10,7 @@ module.exports = {
                     INSERT INTO players (username, team, quizzId) VALUES (?, ?, ?) 
                 `, [username, team, quizzId], (err, results) => {
                     if(err) {
-                        reject({status: 500, message: 'Erro ao tentar adicionar novo jogador.'})
+                        reject({status: 500, message: 'Erro ao tentar adicionar novo jogador.', err})
                     } else {
                         resolve(results.insertId)
                     }
@@ -29,7 +29,7 @@ module.exports = {
                 AND id = ?
             `, [quizzId, playerId], (err, results) => {
                 if(err) {
-                    reject({status: 404, message: 'Houve um erro ao tentar atualizar score do jogador.'})
+                    reject({status: 404, message: 'Houve um erro ao tentar atualizar score do jogador.', err})
                 } else {
                     resolve(200)
                 }
@@ -45,7 +45,7 @@ module.exports = {
                 ORDER BY score DESC
             `, [quizzId], (err, results) => {
                 if(err || !results.length) {
-                    reject({status: 404, message: 'Jogadores do quizz não encontrados.'})
+                    reject({status: 404, message: 'Jogadores do quizz não encontrados.', err})
                 } else {
                     resolve(results)
                 }
