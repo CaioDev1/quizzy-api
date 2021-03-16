@@ -5,7 +5,7 @@ module.exports = mysql.createConnection({
     password: 'caio123',
     database: 'quizzy'
 }) */
-const connection = mysql.createConnection({
+const connection = mysql.createPool({
     host: process.env.AZURE_URL,
     user: process.env.AZURE_USER,
     password: process.env.AZURE_PASSWORD,
