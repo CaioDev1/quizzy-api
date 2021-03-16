@@ -1,5 +1,5 @@
 const express = require('express')
-const errorHandler = require('./errorHandler')
+const errorHandler = require('./src/errorHandler')
 const cors = require('cors')
 
 const app = express()
@@ -7,7 +7,7 @@ const app = express()
 app.use(cors())
 app.use(express.urlencoded({extended: false}))
 app.use(express.json())
-app.use(require('./routes'))
+app.use(require('./src/routes'))
 
 app.use(errorHandler)
 
