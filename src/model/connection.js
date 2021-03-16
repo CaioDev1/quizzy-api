@@ -12,7 +12,7 @@ const connection = mysql.createPool({
     database: process.env.AZURE_DB,
 })
 
-function connectDB() {
+/* function connectDB() {
     connection.connect(function(error){
         if(!!error) console.log(error);
          else console.log('SQL Database Connected!');
@@ -31,6 +31,6 @@ connection.on('uncaughtException', err => {
     console.log(err)
 
     setTimeout(connectDB, 1000)    
-})
+}) */
 
 module.exports = connection
