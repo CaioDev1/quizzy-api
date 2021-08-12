@@ -211,15 +211,15 @@ Link do projeto: [https://github.com/CaioDev1/quizzy](https://github.com/CaioDev
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/CaioDev1/quizzy.svg?style=for-the-badge
-[contributors-url]: https://github.com/CaioDev1/quizzy/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/CaioDev1/quizzy.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/CaioDev1/quizzy-api.svg?style=for-the-badge
+[contributors-url]: https://github.com/CaioDev1/quizzy-api/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/CaioDev1/quizzy-api.svg?style=for-the-badge
 [forks-url]: https://github.com/CaioDev1/quizzy/network/members
-[stars-shield]: https://img.shields.io/github/stars/CaioDev1/quizzy.svg?style=for-the-badge
-[stars-url]: https://github.com/CaioDev1/quizzy/stargazers
-[issues-shield]: https://img.shields.io/github/issues/CaioDev1/quizzy.svg?style=for-the-badge
-[issues-url]: https://github.com/CaioDev1/quizzy/issues
-[license-shield]: https://img.shields.io/github/license/CaioDev1/quizzy.svg?style=for-the-badge
-[license-url]: https://github.com/CaioDev1/quizzy/blob/master/LICENSE.txt
+[stars-shield]: https://img.shields.io/github/stars/CaioDev1/quizzy-api.svg?style=for-the-badge
+[stars-url]: https://github.com/CaioDev1/quizzy-api/stargazers
+[issues-shield]: https://img.shields.io/github/issues/CaioDev1/quizzy-api.svg?style=for-the-badge
+[issues-url]: https://github.com/CaioDev1/quizzy-api/issues
+[license-shield]: https://img.shields.io/github/license/CaioDev1/quizzy-api.svg?style=for-the-badge
+[license-url]: https://github.com/CaioDev1/quizzy-api/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/FALTA-COLOCAR
