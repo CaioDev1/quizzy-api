@@ -8,7 +8,7 @@ module.exports = {
             connection.query(`
                 SELECT 0 FROM quizz WHERE id = ?
             `, [id], (err, results) => {
-                if(err) {
+                if(err || results.length == 0) {
                     reject({status: 404, message: 'Nenhum quizz encontrado com esse código.', err})
                 } else {
                     resolve()
