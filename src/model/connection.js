@@ -10,7 +10,7 @@ let connection = mysql.createConnection({
     password: process.env.AWS_PASSWORD,
     database: process.env.AWS_DB,
     host: process.env.AWS_HOST,
-    connectTimeout: 30
+    connectTimeout: 30000
 })
 
 function connectDB() {
