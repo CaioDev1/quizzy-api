@@ -222,4 +222,4 @@ Link do projeto: [https://github.com/CaioDev1/quizzy](https://github.com/CaioDev
 [license-shield]: https://img.shields.io/github/license/CaioDev1/quizzy-api.svg?style=for-the-badge
 [license-url]: https://github.com/CaioDev1/quizzy-api/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/FALTA-COLOCAR
+[linkedin-url]: https://www.linkedin.com/in/caiodev1/
